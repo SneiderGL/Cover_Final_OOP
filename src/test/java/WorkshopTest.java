@@ -37,7 +37,7 @@ public class WorkshopTest {
     }
 
 
-    // Test para el método sumarDosNumeros
+    // Test para el método sumarDosNumeros - este metodo ya esta hecho y listo
     @Test
     public void testSumarDosNumeros() {
         // Test 1: Suma positiva
