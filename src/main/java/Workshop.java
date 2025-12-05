@@ -126,8 +126,6 @@ public class Workshop {
 
     // Método que cuenta los caracteres en una cadena
     public int contarCaracteres(String cadena) {
-        // TODO: Implementar el método para contar el número de caracteres en una cadena.
-        // Ejemplo: Si cadena = "Hello", el resultado debería ser 5.
         return cadena.length(); // Implementación
     }
 
@@ -155,9 +153,7 @@ public class Workshop {
 
     // Método que convierte una cadena a mayúsculas
     public String convertirAMayusculas(String cadena) {
-        // TODO: Implementar el método para convertir una cadena a mayúsculas.
-        // Ejemplo: Si cadena = "hello", el resultado debería ser "HELLO".
-        return "";
+        return cadena.toUpperCase();
     }
 
     // Método que convierte una cadena a minúsculas
