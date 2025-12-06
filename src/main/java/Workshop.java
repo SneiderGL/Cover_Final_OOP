@@ -1,4 +1,7 @@
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Arrays;
 
 public class Workshop {
     public static void main(String[] args) {
@@ -222,7 +225,30 @@ public class Workshop {
     public int[] eliminarDuplicados(int[] arreglo) {
         // TODO: Implementar el método para eliminar los duplicados de un arreglo.
         // Ejemplo: Si arreglo = [1, 2, 2, 3, 4, 4, 5], el resultado debería ser [1, 2, 3, 4, 5].
-        return new int[0];
+
+        if (arreglo == null || arreglo.length == 0) {
+            return new int[]{};
+        }
+
+        // 1. Usar un Set (HashSet) para almacenar solo elementos únicos.
+        // Los Sets no permiten duplicados por definición.
+        Set<Integer> setUnicos = new HashSet<>();
+
+        // 2. Iterar sobre el arreglo y añadir cada elemento al Set.
+        for (int elemento : arreglo) {
+            setUnicos.add(elemento);
+        }
+
+        // 3. Convertir el Set de elementos únicos de vuelta a un arreglo de enteros (int[]).
+        int[] resultado = new int[setUnicos.size()];
+        int i = 0;
+        for (int elemento : setUnicos) {
+            resultado[i++] = elemento;
+        }
+
+        // Nota: Los elementos en el arreglo resultante pueden no mantener el orden original,
+        // ya que HashSet no garantiza el orden.
+        return resultado;
     }
 
     // Método que combina dos arreglos en uno solo
