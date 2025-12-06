@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Workshop {
     public static void main(String[] args) {
@@ -395,7 +396,20 @@ public class Workshop {
     public boolean validarCorreoElectronico(String correo) {
         // TODO: Implementar el método para validar un correo electrónico.
         // Ejemplo: Si correo = "test@example.com", el resultado debería ser true.
-        return false;
+
+        if (correo == null || correo.trim().isEmpty()) {
+            return false;
+        }
+
+        // Expresión Regular (Regex) para validar el formato de correo electrónico.
+        // Esta es una regex estándar que verifica la estructura básica (usuario@dominio.tld).
+        String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+
+        // 1. Compilar la expresión regular
+        Pattern patron = Pattern.compile(regex);
+
+        // 2. Verificar si el correo coincide con el patrón
+        return patron.matcher(correo).matches();
     }
 
     // Método que calcula el promedio de una lista de números
