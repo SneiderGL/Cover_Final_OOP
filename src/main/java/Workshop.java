@@ -432,12 +432,26 @@ public class Workshop {
 
         return Integer.toBinaryString(numero);
     }
-
     // Método que convierte un número en su representación hexadecimal
     public String convertirAHexadecimal(int numero) {
         // TODO: Implementar el método para convertir un número en su representación hexadecimal.
         // Ejemplo: Si numero = 255, el resultado debería ser "FF".
-        return "";
+
+        // Usamos el método estático toHexString de la clase Integer.
+        if (numero == 0) {
+            return "0";
+        }
+
+        // El método Integer.toHexString() para números negativos retorna el complemento a dos.
+        // Si el requisito es simple (solo anteponer el signo), necesitamos una lógica adicional.
+        if (numero < 0) {
+            // Convierte el valor absoluto a hexadecimal y le antepone el signo.
+            // toHexString retorna minúsculas, por eso usamos toUpperCase() para coincidir con el Test.
+            return "-" + Integer.toHexString(Math.abs(numero)).toUpperCase();
+        }
+
+        // toHexString retorna minúsculas, usamos toUpperCase() para que coincida con "FF" del Test.
+        return Integer.toHexString(numero).toUpperCase();
     }
 
     // Método para el juego de piedra, papel, tijera, lagarto, Spock
