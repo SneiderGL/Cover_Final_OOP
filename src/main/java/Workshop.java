@@ -258,11 +258,59 @@ public class Workshop {
         return new int[0];
     }
 
+    // Método auxiliar privado para invertir una porción del arreglo
+    private void invertir(int[] arreglo, int inicio, int fin) {
+        while (inicio < fin) {
+            int temp = arreglo[inicio];
+            arreglo[inicio] = arreglo[fin];
+            arreglo[fin] = temp;
+            inicio++;
+            fin--;
+        }
+    }
+
     // Método que rota un arreglo n posiciones
     public int[] rotarArreglo(int[] arreglo, int posiciones) {
         // TODO: Implementar el método para rotar un arreglo n posiciones.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5] y posiciones = 2, el resultado debería ser [3, 4, 5, 1, 2].
-        return new int[0];
+        // Ejemplo (Derecha): Si arreglo = [1, 2, 3, 4, 5] y posiciones = 2, el resultado debería ser [4, 5, 1, 2, 3].
+        // Ejemplo (Izquierda): Si arreglo = [1, 2, 3, 4, 5] y posiciones = -2, el resultado debería ser [3, 4, 5, 1, 2].
+
+        if (arreglo == null || arreglo.length <= 1) {
+            return arreglo;
+        }
+
+        int n = arreglo.length;
+
+        // 1. Calcular la rotación efectiva y normalizarla para rotación a la derecha.
+        // El operador % maneja rotaciones mayores que n. Sumar n asegura un resultado positivo.
+        // Si posiciones es 2, rotacionEfectiva = 2 (Rotar a la derecha 2 veces).
+        // Si posiciones es -2, rotacionEfectiva = 3 (Rotar a la izquierda 2 veces es igual a rotar a la derecha 3 veces en un arreglo de 5).
+        posiciones = posiciones % n;
+        if (posiciones < 0) {
+            posiciones += n;
+        }
+
+        // Si posiciones es 0 o n, no hay rotación.
+        if (posiciones == 0) {
+            return arreglo;
+        }
+
+        // Usamos la técnica de inversión de sub-arreglos (Reversal Algorithm) para rotación a la derecha 'posiciones' veces:
+        // Por ejemplo, para [1, 2, 3, 4, 5] y posiciones = 2 (Resultado esperado: [4, 5, 1, 2, 3])
+
+        // 2. Invertir todo el arreglo.
+        // [1, 2, 3, 4, 5] -> [5, 4, 3, 2, 1]
+        invertir(arreglo, 0, n - 1);
+
+        // 3. Invertir la primera parte (desde 0 hasta posiciones - 1).
+        // [5, 4, 3, 2, 1] -> [4, 5, 3, 2, 1] (posiciones = 2, se invierte de 0 a 1)
+        invertir(arreglo, 0, posiciones - 1);
+
+        // 4. Invertir la segunda parte (desde posiciones hasta n - 1).
+        // [4, 5, 3, 2, 1] -> [4, 5, 1, 2, 3] (se invierte de 2 a 4)
+        invertir(arreglo, posiciones, n - 1);
+
+        return arreglo;
     }
 
     // Método que cuenta los caracteres en una cadena
