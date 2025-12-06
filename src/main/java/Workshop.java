@@ -73,12 +73,34 @@ public class Workshop {
         return true;
     }
 
-    // Método que genera una serie de Fibonacci
-    public int[] serieFibonacci(int n) {
-        // TODO: Implementar el método para generar la serie de Fibonacci hasta el número n.
-        // Ejemplo: Si n = 5, el resultado debería ser [0, 1, 1, 2, 3].
-        // Lanzar IllegalArgumentException si n es negativo.
-        return new int[0];
+    // Método que genera la secuencia de Fibonacci hasta el n-ésimo término
+    public long[] serieFibonacci(int n) {
+        // TODO: Implementar el método para generar la secuencia de Fibonacci hasta el n-ésimo término.
+        // Ejemplo: Si n = 7, el resultado debería ser [0, 1, 1, 2, 3, 5, 8].
+
+        // 1. Manejar casos triviales
+        if (n <= 0) {
+            return new long[]{}; // Devuelve un arreglo vacío
+        }
+
+        // 2. Inicializar el arreglo de resultados (debe ser 'long' por el rápido crecimiento)
+        long[] secuencia = new long[n];
+
+        // 3. Establecer los casos base de la secuencia (F0 = 0, F1 = 1)
+        if (n >= 1) {
+            secuencia[0] = 0;
+        }
+        if (n >= 2) {
+            secuencia[1] = 1;
+        }
+
+        // 4. Generar los términos restantes iterativamente
+        for (int i = 2; i < n; i++) {
+            // El término F(i) es la suma de F(i-1) y F(i-2)
+            secuencia[i] = secuencia[i - 1] + secuencia[i - 2];
+        }
+
+        return secuencia;
     }
 
     // Método que suma todos los elementos de un arreglo

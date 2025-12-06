@@ -92,15 +92,21 @@ public class WorkshopTest {
         assertFalse(tester.esPrimo(-3));
     }
 
-    // Test para el método serieFibonacci
+    // Archivo: WorkshopTest.java
+
     @Test
     public void testSerieFibonacci() {
-        // Test 1: Serie Fibonacci de 5 términos
-        assertArrayEquals(new int[]{0, 1, 1, 2, 3}, tester.serieFibonacci(5));
-        // Test 2: Serie Fibonacci de 1 término
-        assertArrayEquals(new int[]{0}, tester.serieFibonacci(1));
-        // Test 3: Serie Fibonacci de 0 términos
-        assertArrayEquals(new int[]{}, tester.serieFibonacci(0));
+        // Test 1: n = 0 (usamos long[])
+        assertArrayEquals(new long[]{}, tester.serieFibonacci(0));
+
+        // Test 2: n = 1
+        assertArrayEquals(new long[]{0L}, tester.serieFibonacci(1));
+
+        // Test 3: n = 7. El arreglo esperado debe ser de tipo long[].
+        assertArrayEquals(new long[]{0L, 1L, 1L, 2L, 3L, 5L, 8L}, tester.serieFibonacci(7));
+
+        // Test 4: n = 10. El arreglo esperado debe ser de tipo long[].
+        assertArrayEquals(new long[]{0L, 1L, 1L, 2L, 3L, 5L, 8L, 13L, 21L, 34L}, tester.serieFibonacci(10));
     }
 
     // Test para el método sumaElementos
